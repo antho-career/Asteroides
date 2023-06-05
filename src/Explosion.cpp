@@ -21,7 +21,7 @@ void Explosion::mettreAJour(float temps)
     {
         sprite.setScale(age/DUREE_VIE, age/DUREE_VIE);
     }
-    ElementEspace::mettreAJour(temps);
+    //ElementEspace::mettreAJour(temps); //plus besoin maintenant
 }
 
 void Explosion::afficher(sf::RenderWindow& fenetre)

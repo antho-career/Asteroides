@@ -12,12 +12,18 @@ ElementEspace::ElementEspace(std::string_view const& cheminImage)
     sprite.setPosition(position.getX(),position.getY());
 }
 
-void ElementEspace::mettreAJour(float temps)
+void ElementEspace::actualiser(float temps)
 {
+    mettreAJour(temps);
     auto deplacement = vitesse*temps;
     position += deplacement;
     sprite.setPosition(position.getX(),position.getY());
     sprite.rotate(vitesseAngulaire*temps);
+}
+
+void ElementEspace::mettreAJour(float temps)
+{
+
 }
 
 void ElementEspace::afficher(sf::RenderWindow& fenetre)

@@ -38,8 +38,9 @@ void Vaisseau::mettreAJour(float temps)
             vitesseAngulaire = 0;
         }
     }
-    ElementEspace::mettreAJour(temps);//on appelle la methode de la classe mere ici pour eviter la redondance du code
-    explosion.mettreAJour(temps);
+    //ElementEspace::mettreAJour(temps);//on appelle la methode de la classe mere ici pour eviter la redondance du code
+    //plus besoin maintenant.
+    explosion.actualiser(temps);
 }
 
 void Vaisseau::reagirCollision()

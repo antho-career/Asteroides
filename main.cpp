@@ -31,15 +31,8 @@ int main()
         auto tempsBoucle = chrono.restart().asSeconds();
         for (auto* element : elements)
         {
-            element->mettreAJour(tempsBoucle);
+            element->actualiser(tempsBoucle);
         }
-        /*for (auto* element : elements)
-        {
-            if(element != &asteroide)
-            {
-                element->testerCollision(asteroide);
-            }
-        }*/
         for (auto* element : elements)
         {
             for (auto* element2 : elements)

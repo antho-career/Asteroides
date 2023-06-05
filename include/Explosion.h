@@ -9,11 +9,11 @@ class Explosion : public ElementEspace
     public:
         Explosion();
         void demarrer(Coordonnees const& p_position);
-        virtual void mettreAJour(float temps) override;
         virtual void reagirCollision() override;
         virtual void afficher(sf::RenderWindow& fenetre) override;
 
     protected:
+        virtual void mettreAJour(float temps) override;
 
     private:
         bool demarree{false};
