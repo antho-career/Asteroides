@@ -2,9 +2,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Vecteur.h"
+#include "Missile.h"
 
-Vaisseau::Vaisseau(sf::Color couleur) : ElementEspace{"ressources/vaisseau.png"}
+Vaisseau::Vaisseau(Espace& p_espace, sf::Color couleur) : ElementEspace{"ressources/vaisseau.png"}, espace{p_espace}
 {
+    type = TypeElement::VAISSEAU;
     sprite.setColor(couleur);
 }
 
@@ -13,10 +15,16 @@ void Vaisseau::actualiserEtat()
     accelerationEnCours = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
     tourneAGauche = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
     tourneADroite = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && (dernierTir.getElapsedTime().asSeconds() > 0,1))
+    {
+        espace.ajouter(std::make_unique<Missile>(position, sprite.getRotation()));
+        dernierTir.restart();
+    }
 }
 
 void Vaisseau::mettreAJour(float temps)
 {
+    actualiserEtat();
     if(!detruit)
     {
         if(accelerationEnCours)
@@ -40,26 +48,14 @@ void Vaisseau::mettreAJour(float temps)
     }
     //ElementEspace::mettreAJour(temps);//on appelle la methode de la classe mere ici pour eviter la redondance du code
     //plus besoin maintenant.
-    explosion.actualiser(temps);
+    //explosion.actualiser(temps);//on ajoutera l explosion a l espace
 }
 
-void Vaisseau::reagirCollision()
+void Vaisseau::reagirCollision(TypeElement typeAutre)
 {
-    if(!detruit)
+    if(typeAutre == TypeElement::ASTEROIDE)
     {
         detruit = true;
-        explosion.demarrer(position);
-    }
-}
-
-void Vaisseau::afficher(sf::RenderWindow& fenetre)
-{
-    if(!detruit)
-    {
-        ElementEspace::afficher(fenetre);
-    }
-    else
-    {
-        explosion.afficher(fenetre);
+        espace.ajouter(std::make_unique<Explosion>(position));
     }
 }

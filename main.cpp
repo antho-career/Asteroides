@@ -1,7 +1,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Vaisseau.h"
 #include "Asteroide.h"
+#include "Espace.h"
 
 using namespace std;
 
@@ -13,12 +15,12 @@ int main()
 {
     sf::RenderWindow fenetre(sf::VideoMode(LONGUEUR_FENETRE, HAUTEUR_FENETRE), "Asteroid");
     Coordonnees::initialiserEspace(LONGUEUR_FENETRE, HAUTEUR_FENETRE);
-    auto vaisseau = Vaisseau{COULEUR_VAISSEAU};
-    auto asteroide = Asteroide{};
-    auto asteroide2 = Asteroide{};
-    auto asteroide3 = Asteroide{};
-    auto elements = std::array<ElementEspace*,4>{&asteroide, &asteroide2, &asteroide3, &vaisseau};
-    auto chrono = sf::Clock();
+    auto espace = Espace{};
+    //auto pointeurVaisseau = std::unique_ptr<Vaisseau>{nullptr};//pointeur dans la tas initialise a null
+
+
+    auto partieDemarree{false};
+    //auto chrono = sf::Clock();
     while (fenetre.isOpen())
     {
         auto evenement = sf::Event{};
@@ -26,28 +28,22 @@ int main()
         {
             if (evenement.type == sf::Event::Closed)
                 fenetre.close();
-        }
-        vaisseau.actualiserEtat();
-        auto tempsBoucle = chrono.restart().asSeconds();
-        for (auto* element : elements)
-        {
-            element->actualiser(tempsBoucle);
-        }
-        for (auto* element : elements)
-        {
-            for (auto* element2 : elements)
+            if(evenement.type == sf::Event::KeyPressed && !partieDemarree)
             {
-                if(element != element2)
-                {
-                    element->testerCollision(*element2);
-                }
+                espace.ajouter(std::make_unique<Vaisseau>(espace, COULEUR_VAISSEAU));
+                espace.ajouter(std::make_unique<Asteroide>());
+                //espace.ajouter(std::make_unique<Asteroide>());
+                //espace.ajouter(std::make_unique<Asteroide>());
+                //ici, pas besoins d utiliser la methode move car on cree le vaisseau directement
+                //sans passer par une variable intermediaire. Idem pour les asteroides.
+                partieDemarree = true;
             }
         }
+        espace.actualiser();
+        espace.gererCollisions();
+        espace.nettoyer();
         fenetre.clear();
-        for (auto* element : elements)
-        {
-            element->afficher(fenetre);
-        }
+        espace.afficher(fenetre);
         fenetre.display();
     }
     return 0;

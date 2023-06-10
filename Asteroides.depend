@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1685988755 source:c:\users\user\documents\projets\asteroides\main.cpp
+1686422242 source:c:\users\user\documents\projets\asteroides\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
+	<memory>
 	"Vaisseau.h"
 	"Asteroide.h"
+	"Espace.h"
 
 1683465214 c:\users\user\documents\projets\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -422,18 +424,20 @@
 1683490275 c:\users\user\documents\projets\asteroides\includes\vaisseau.h
 	<SFML/Graphics.hpp>
 
-1685987612 source:c:\users\user\documents\projets\asteroides\src\vaisseau.cpp
+1686421946 source:c:\users\user\documents\projets\asteroides\src\vaisseau.cpp
 	"Vaisseau.h"
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Vecteur.h"
+	"Missile.h"
 
-1685987355 c:\users\user\documents\projets\asteroides\include\vaisseau.h
+1686417327 c:\users\user\documents\projets\asteroides\include\vaisseau.h
 	<SFML/Graphics.hpp>
 	"Vecteur.h"
 	"Coordonnees.h"
 	"ElementEspace.h"
 	"Explosion.h"
+	"Espace.h"
 
 1685817640 source:c:\users\user\documents\projets\asteroides\src\vecteur.cpp
 	"Vecteur.h"
@@ -450,26 +454,40 @@
 	<cmath>
 	<algorithm>
 
-1685817640 source:c:\users\user\documents\projets\asteroides\src\asteroide.cpp
+1686420709 source:c:\users\user\documents\projets\asteroides\src\asteroide.cpp
 	"Asteroide.h"
 	<iostream>
 	<random>
 
-1685817640 c:\users\user\documents\projets\asteroides\include\asteroide.h
+1686417302 c:\users\user\documents\projets\asteroides\include\asteroide.h
 	"ElementEspace.h"
 
-1685987950 c:\users\user\documents\projets\asteroides\include\elementespace.h
+1686417023 c:\users\user\documents\projets\asteroides\include\elementespace.h
 	<SFML/Graphics.hpp>
 	"Vecteur.h"
 	"Coordonnees.h"
 
-1685987270 source:c:\users\user\documents\projets\asteroides\src\elementespace.cpp
+1686417080 source:c:\users\user\documents\projets\asteroides\src\elementespace.cpp
 	"ElementEspace.h"
 	<iostream>
 
-1685987392 c:\users\user\documents\projets\asteroides\include\explosion.h
+1686417298 c:\users\user\documents\projets\asteroides\include\explosion.h
 	<ElementEspace.h>
 
-1685987506 source:c:\users\user\documents\projets\asteroides\src\explosion.cpp
+1686419596 source:c:\users\user\documents\projets\asteroides\src\explosion.cpp
 	"Explosion.h"
+
+1686413362 c:\users\user\documents\projets\asteroides\include\espace.h
+	<SFML/Graphics.hpp>
+	<vector>
+	"ElementEspace.h"
+
+1686415660 source:c:\users\user\documents\projets\asteroides\src\espace.cpp
+	"Espace.h"
+
+1686421270 source:c:\users\user\documents\projets\asteroides\src\missile.cpp
+	"Missile.h"
+
+1686421313 c:\users\user\documents\projets\asteroides\include\missile.h
+	<ElementEspace.h>
 

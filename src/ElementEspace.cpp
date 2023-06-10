@@ -49,8 +49,6 @@ void ElementEspace::testerCollision(ElementEspace& autre)
     auto distance = position.calculerDistance(autre.position);
     if (distance < getRayon() + autre.getRayon())
     {
-        reagirCollision();
-        //sprite.setColor(sf::Color::Red);
-        //autre.sprite.setColor(sf::Color::Red);
+        reagirCollision(autre.type);
     }
 }

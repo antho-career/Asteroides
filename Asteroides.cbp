@@ -49,14 +49,18 @@
 		<Unit filename="include/Asteroide.h" />
 		<Unit filename="include/Coordonnees.h" />
 		<Unit filename="include/ElementEspace.h" />
+		<Unit filename="include/Espace.h" />
 		<Unit filename="include/Explosion.h" />
+		<Unit filename="include/Missile.h" />
 		<Unit filename="include/Vaisseau.h" />
 		<Unit filename="include/Vecteur.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Asteroide.cpp" />
 		<Unit filename="src/Coordonnees.cpp" />
 		<Unit filename="src/ElementEspace.cpp" />
+		<Unit filename="src/Espace.cpp" />
 		<Unit filename="src/Explosion.cpp" />
+		<Unit filename="src/Missile.cpp" />
 		<Unit filename="src/Vaisseau.cpp" />
 		<Unit filename="src/Vecteur.cpp" />
 		<Extensions />
